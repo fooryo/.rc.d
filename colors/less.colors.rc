@@ -1,3 +1,5 @@
+# https://www.geeksforgeeks.org/how-to-view-colored-man-pages-in-linux/
+
 export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
 export LESS_TERMCAP_md=$'\e[01;37m'       # begin bold
 export LESS_TERMCAP_me=$'\e[0m'           # end all mode like so, us, mb, md, mr
