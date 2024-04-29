@@ -1,0 +1,21 @@
+alias git-ladog="git log --all --decorate --oneline --graph"
+#git pull add commit push
+alias git-pacp='git pull && git add . && git commit -m "${USER:-$(whoami)}@${HOST:-$(hostname)} - $(date --iso-8601=minutes)" && git push' 
+
+#forse meglio banalmente togliere http(s)://  e sostituire i '/' con ':'
+#forse meglio differenziare i vari host
+#if $1 == 'github.com' bene
+#if $1 == 'gitlab.com' allora attenzione ai subgroups
+function git-clone(){
+  echo "git-clone is WIP bash function (Work In Progress). Use with care :)\n"
+  [[ -z ${1} ]] && { echo "Expected a git repo url" ; exit 1; }
+  [[ ! -z ${2} ]] && { echo "Please, no destination :(\n\tI will put the repo in pwd" ; exit 1 }
+  DEST=$(printf "${1}" | perl -pe 's/(?:https?:\/\/)?(\w+\.\w+)\/(\w+)\/(\w\w+)/$1:$2:$3/' )
+  git clone "${1}" "${DEST}" && git clone "${1}.wiki.git" "${DEST}.wiki"
+}
+
+function gh-clone(){
+  echo "Questa funzione non fa nulla :)"
+  echo "Funzione per clonare interi account/organizzazioni di github, repo dopo repo"
+  echo "(Forse serve un token?)"
+  }
